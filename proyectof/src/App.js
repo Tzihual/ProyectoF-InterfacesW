@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import MovieForm from './components/MovieForm';
+import ListaReseña from './paginas/ListaReseña';
+import PaginaDeInicio from './paginas/PaginaDeInicio';
 
-function App() {
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [activeView, setActiveView] = useState('home');
+  const [movieToEdit, setMovieToEdit] = useState(null);
+
+  const addMovie = (newMovie) => {
+    setMovies([...movies, { ...newMovie, id: movies.length + 1 }]);
+    setActiveView('list');
+  };
+
+  const deleteMovie = (id) => {
+    setMovies(movies.filter(movie => movie.id !== id));
+  };
+
+  const editMovie = (updatedMovie) => {
+    setMovies(movies.map(movie => movie.id === updatedMovie.id ? updatedMovie : movie));
+    setMovieToEdit(null);
+    setActiveView('list');
+  };
+
+  const handleEditInitiation = (movie) => {
+    setMovieToEdit(movie);
+    setActiveView('create');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar onSwitchView={setActiveView} />
+      {activeView === 'home' && <PaginaDeInicio />}
+      {activeView === 'create' && <MovieForm onAddMovie={addMovie} onEditMovie={editMovie} movieToEdit={movieToEdit} />}
+      {activeView === 'list' && <ListaReseña movies={movies} onDelete={deleteMovie} onEdit={handleEditInitiation} />}
     </div>
   );
-}
+};
 
 export default App;

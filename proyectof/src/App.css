@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+  display: block; 
+}
+
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.movie-card {
+  width: 23%; /* Aproximadamente para que quepan cuatro en una fila */
+  margin: 1%; /* Espacio entre tarjetas */
+}
