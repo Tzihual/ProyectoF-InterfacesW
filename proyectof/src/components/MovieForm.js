@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import ReactStars from "react-rating-stars-component"; //npm install react-rating-stars-component
 
 const FormContainer = styled.div`
   width: 100%;
@@ -44,7 +45,7 @@ const Label = styled.label`
 const Button = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: #3498db;
+  background-color: #191970;
   color: white;
   border: none;
   border-radius: 8px;
@@ -54,24 +55,38 @@ const Button = styled.button`
   box-sizing: border-box;
 
   &:hover {
-    background-color: #2980b9;
+    background-color: #8B0000;
     transform: translateY(-2px);
   }
 `;
 
-const MovieForm = ({ onAddMovie, onEditMovie, movieToEdit }) => {
+const Texto = styled.textarea`
+ width: 100%;
+ height:50px;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  transition: border 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+  
+  &:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+  }
+`;
+
+const MovieForm = ({ onAddMovie }) => {
   const [movie, setMovie] = useState({
     title: '',
-    genre: '',
-    year: '',
-    image: ''
+    image:'',
+    date: '',
+    rating: 0,
+    reviews: ''
   });
 
-  useEffect(() => {
-    if (movieToEdit) {
-      setMovie(movieToEdit);
-    }
-  }, [movieToEdit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,64 +95,52 @@ const MovieForm = ({ onAddMovie, onEditMovie, movieToEdit }) => {
       [name]: value
     });
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (movie.title && movie.genre && movie.year && movie.image) {
-      if (movieToEdit) {
-        onEditMovie(movie);
-      } else {
-        onAddMovie(movie);
-      }
-      setMovie({ title: '', genre: '', year: '', image: '' });
-    }
+  const handleRatingChange = (newRating) => {
+    setMovie({
+      ...movie,
+      rating: newRating, // Actualizamos la calificación seleccionada
+    });
   };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if(movie.title && movie.image && movie.date && movie.rating && movie.reviews){
+        onAddMovie(movie);
+        setMovie({title:'', image:'', date:'', rating:0, reviews:''})
+      }
+    }
+  
 
   return (
     <FormContainer>
-      <h2>{movieToEdit ? "Editar Película" : "Agregar Nueva Película"}</h2>
+      <h2>Añadir Reseña</h2>
       <form onSubmit={handleSubmit}>
         <InputGroup>
-          <Label htmlFor="title">Título</Label>
-          <Input
-            type="text"
-            name="title"
-            value={movie.title}
-            onChange={handleChange}
-            placeholder="Ingresa el título de la película"
+        <Label htmlFor="title">Nombre de la película</Label>
+        <Input type="text" name="title" value={movie.title} onChange={handleChange} placeholder="Ingresa el titulo de la película"/>
+        </InputGroup>
+        <InputGroup>
+        <Label htmlFor="image">Imagen</Label>
+        <Input type="text" name="image" value={movie.image} onChange={handleChange} placeholder="Ingresa la imagen de la película"/>
+        </InputGroup>
+        <InputGroup>
+        <Label htmlFor="date">Fecha</Label>
+        <Input type="date" name="date" value={movie.date} onChange={handleChange} placeholder="Ingresa la fecha actual"/>
+        </InputGroup>
+        <InputGroup>
+        <Label htmlFor="rating">Calificación</Label>
+        <ReactStars
+            count={5}
+            value={movie.rating} // Valor actual de la calificación
+            onChange={handleRatingChange} // Maneja el cambio de calificación
+            size={30}
+            activeColor="#FFD700"
           />
         </InputGroup>
         <InputGroup>
-          <Label htmlFor="genre">Género</Label>
-          <Input
-            type="text"
-            name="genre"
-            value={movie.genre}
-            onChange={handleChange}
-            placeholder="Ingresa el género de la película"
-          />
+        <Label htmlFor="reviews">Crítica</Label>
+        <Texto name="reviews" onChange={handleChange} value={movie.reviews} rows={5} placeholder="Escribe tu reseña de la película..."/>    
         </InputGroup>
-        <InputGroup>
-          <Label htmlFor="year">Año</Label>
-          <Input
-            type="text"
-            name="year"
-            value={movie.year}
-            onChange={handleChange}
-            placeholder="Ingresa el año de estreno"
-          />
-        </InputGroup>
-        <InputGroup>
-          <Label htmlFor="image">Imagen URL</Label>
-          <Input
-            type="text"
-            name="image"
-            value={movie.image}
-            onChange={handleChange}
-            placeholder="Ingresa la URL de la imagen"
-          />
-        </InputGroup>
-        <Button type="submit">{movieToEdit ? "Actualizar" : "Agregar"}</Button>
+        <Button type="submit">Añadir reseña</Button>
       </form>
     </FormContainer>
   );
