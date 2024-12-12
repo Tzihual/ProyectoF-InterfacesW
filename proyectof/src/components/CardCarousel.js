@@ -7,17 +7,25 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #00008B;
   border-radius: 10px;
+  color: white;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 5px; /* Espaciado entre cards */
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    filter: brightness(1.2); /* Aumenta el brillo */
+  }
 `;
 
 const MovieImage = styled.img`
   width: 100%; /* La imagen ocupa todo el ancho del card */
   height: 350px; /* Altura ajustada para mantener la proporción */
   object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsión */
+ 
 `;
 
 const MovieInfo = styled.div`
@@ -41,6 +49,7 @@ const MovieDetails = styled.div`
 const CardCarrusel = ({ movie }) => {
   return (
     <CardContainer>
+      <br></br>
       <MovieImage src={movie.image} alt={movie.title} />
       <MovieInfo>
         <MovieTitle>{movie.title}</MovieTitle>

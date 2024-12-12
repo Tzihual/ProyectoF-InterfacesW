@@ -38,11 +38,13 @@ const Carousel = ({ movies }) => {
   };
 
   return (
+    
     <Slider {...settings}>
       {movies.map(movie => (
         <div key={movie.id}>
           <CardCarrusel movie={movie} />
         </div>
+        
       ))}
     </Slider>
   );

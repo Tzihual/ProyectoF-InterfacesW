@@ -1,5 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #191970; /* Mismo color que el navbar */
+  color: white; /* Asegúrate de usar texto visible */
+  font-family: Arial, sans-serif; /* Fuente consistente */
+}
+
 .App {
   text-align: center;
+  background-color: #191970; /* Mismo color que el fondo */
+ 
+}
+/*
+.App {
+  text-align: center;
+  background-color: #191970;
 }
 
 .App-logo {
@@ -36,7 +53,7 @@
     transform: rotate(360deg);
   }
 }
-
+*/
 .movie-card img {
   max-width: 100%;
   height: auto;
@@ -53,4 +70,15 @@
 .movie-card {
   width: 23%; /* Aproximadamente para que quepan cuatro en una fila */
   margin: 1%; /* Espacio entre tarjetas */
+}
+
+
+.slick-dots li button:before {
+  color: white; /* Cambia el color de los puntos no activos */
+  font-size: 12px; /* Tamaño del punto */
+}
+
+/*PUNTOS ACTIVOS*/
+.slick-dots li.slick-active button:before {
+  color: #FFD700; /* Cambia el color del punto activo (amarillo dorado en este caso) */
 }

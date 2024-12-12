@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import MovieForm from './components/MovieForm';
 import ListaReseña from './paginas/ListaReseña';
 import PaginaDeInicio from './paginas/PaginaDeInicio';
+import "./App.css";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -21,6 +22,7 @@ const App = () => {
       {activeView === 'create' && <MovieForm onAddMovie={addMovie} />}
       {activeView === 'list' && <ListaReseña movies={movies} />}
     </div>
+    
   );
 };
 

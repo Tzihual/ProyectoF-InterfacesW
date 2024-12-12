@@ -6,7 +6,7 @@ const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
   margin: 30px auto;
-  background-color: #fff;
+  background-color: #00008B;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -38,14 +38,14 @@ const Input = styled.input`
 
 const Label = styled.label`
   font-weight: bold;
-  color: #333;
+  color: white;
   font-size: 14px;
 `;
 
 const Button = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: #191970;
+  background-color: #0000CE;
   color: white;
   border: none;
   border-radius: 8px;
@@ -77,7 +77,8 @@ const Texto = styled.textarea`
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
   }
 `;
-
+const Titulo = styled.h2`
+color:white;`;
 const MovieForm = ({ onAddMovie }) => {
   const [movie, setMovie] = useState({
     title: '',
@@ -112,7 +113,7 @@ const MovieForm = ({ onAddMovie }) => {
 
   return (
     <FormContainer>
-      <h2>Añadir Reseña</h2>
+      <Titulo>Añadir Reseña</Titulo>
       <form onSubmit={handleSubmit}>
         <InputGroup>
         <Label htmlFor="title">Nombre de la película</Label>
@@ -129,7 +130,7 @@ const MovieForm = ({ onAddMovie }) => {
         <InputGroup>
         <Label htmlFor="rating">Calificación</Label>
         <ReactStars
-            count={5}
+            count={10}
             value={movie.rating} // Valor actual de la calificación
             onChange={handleRatingChange} // Maneja el cambio de calificación
             size={30}
@@ -140,7 +141,7 @@ const MovieForm = ({ onAddMovie }) => {
         <Label htmlFor="reviews">Crítica</Label>
         <Texto name="reviews" onChange={handleChange} value={movie.reviews} rows={5} placeholder="Escribe tu reseña de la película..."/>    
         </InputGroup>
-        <Button type="submit">Añadir reseña</Button>
+        <Button type="submit">Añadir</Button>
       </form>
     </FormContainer>
   );

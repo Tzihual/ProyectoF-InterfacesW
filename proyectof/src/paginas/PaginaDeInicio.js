@@ -25,8 +25,10 @@ const PaginaDeInicio = () => {
     <div>
       <h2>Tendencias</h2>
       <Carousel movies={tendencias} />
+      <br></br><br></br>
       <h2>Lo más popular</h2>
       <Carousel movies={peliculas} />
+      <br></br><br></br>
       <h2>Mejor calificadas</h2>
       <Carousel movies={mejorCalificadas} />
     </div>
