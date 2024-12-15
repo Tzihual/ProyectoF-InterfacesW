@@ -25,11 +25,12 @@ const ListaReseña = ({ movies, onDelete, onEdit }) => {
         <NoReviewsMessage>No tienes reseñas guardadas aún.</NoReviewsMessage>
       ) : (
         <div className="movie-list">
-          {movies.map(movie => (
+          {movies.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
               onDelete={() => onDelete(movie.id)}
+              onEdit={onEdit}
             />
           ))}
         </div>
@@ -37,5 +38,6 @@ const ListaReseña = ({ movies, onDelete, onEdit }) => {
     </PageContainer>
   );
 };
+
 
 export default ListaReseña;

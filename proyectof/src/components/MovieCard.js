@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-rating-stars-component';
+import EditModal from './EditModal';
 
 const CardContainer = styled.div`
   background-color: #fff;
@@ -15,6 +16,7 @@ const CardContainer = styled.div`
 `;
 
 const MovieTitle = styled.h3`
+  color: #555;
   font-size: 20px;
   margin-bottom: 10px;
 `;
@@ -36,10 +38,11 @@ const ButtonGroup = styled.div`
   margin-top: 15px;
   display: flex;
   justify-content: center; /* Centrado del botón */
+  gap: 30px;
 `;
 
 const Button = styled.button`
-  background-color: #FF6347;
+  background-color: #0000CE;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -61,6 +64,12 @@ const RatingContainer = styled.div`
 `;
 
 const MovieCard = ({ movie, onDelete, onEdit }) => {
+  const [isModalOpen, setModalOpen] = React.useState(false);
+
+  const handleSave = (updatedMovie) => {
+    onEdit(updatedMovie);
+  };
+
   return (
     <CardContainer>
       <MovieTitle>{movie.title}</MovieTitle>
@@ -71,13 +80,20 @@ const MovieCard = ({ movie, onDelete, onEdit }) => {
           value={movie.rating}
           size={24}
           activeColor="#FFD700"
-          edit={false} // Solo es para mostrar la calificación
+          edit={false}
         />
       </RatingContainer>
       <MovieReview>{movie.reviews}</MovieReview>
       <ButtonGroup>
+        <Button onClick={() => setModalOpen(true)}>Editar</Button>
         <Button onClick={onDelete}>Eliminar</Button>
       </ButtonGroup>
+      <EditModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        movie={movie}
+        onSave={handleSave}
+      />
     </CardContainer>
   );
 };
