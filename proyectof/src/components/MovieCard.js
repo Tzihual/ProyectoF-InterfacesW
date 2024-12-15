@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-rating-stars-component';
 import EditModal from './EditModal';
@@ -64,14 +64,15 @@ const RatingContainer = styled.div`
 `;
 
 const MovieCard = ({ movie, onDelete, onEdit }) => {
-  const [isModalOpen, setModalOpen] = React.useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);  // Aquí se define isModalOpen
 
   const handleSave = (updatedMovie) => {
     onEdit(updatedMovie);
+    setModalOpen(false); // Cierra el modal después de guardar
   };
 
   return (
-    <CardContainer>
+    <CardContainer key={movie.rating}>
       <MovieTitle>{movie.title}</MovieTitle>
       {movie.image && <MovieImage src={movie.image} alt={movie.title} />}
       <RatingContainer>

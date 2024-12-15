@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactStars from 'react-rating-stars-component';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -98,6 +99,10 @@ const EditModal = ({ isOpen, onClose, movie, onSave }) => {
   const [reviews, setReviews] = React.useState(movie.reviews);
   const [rating, setRating] = React.useState(movie.rating);
 
+  const handleRatingChange = (newRating) => {
+    setRating(newRating); // Actualiza el estado de rating cuando se cambian las estrellas
+  };
+
   if (!isOpen) return null;
 
   const handleSave = () => {
@@ -127,17 +132,17 @@ const EditModal = ({ isOpen, onClose, movie, onSave }) => {
                 />
             </FormGroup>
             <FormGroup>
-                <label>Calificación:</label>
-                <FormField
-                type="number"
-                min="0"
-                max="10"
-                value={rating}
-                onChange={(e) => setRating(Number(e.target.value))}
-                />
-            </FormGroup>
+            <label>Calificación:</label>
+            <ReactStars
+              count={10}
+              value={rating}
+              onChange={handleRatingChange}
+              size={24}
+              activeColor="#ffd700"
+            />
+          </FormGroup>
         </form>
-
+        
         <SaveButton onClick={handleSave}>Guardar</SaveButton>
       </ModalContent>
     </ModalOverlay>

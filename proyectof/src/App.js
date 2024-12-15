@@ -74,6 +74,15 @@ const App = () => {
     setMovies(movies.filter(movie => movie.id !== id));
   };
 
+  const editMovie = (updatedMovie) => {
+    console.log("Before update", movies);
+    const newMovies = movies.map(movie => 
+      movie.id === updatedMovie.id ? updatedMovie : movie
+    );
+    setMovies(newMovies);
+    console.log("After update", newMovies);
+  };
+  
   return (
     <div className="App">
       {!isLoggedIn ? (
@@ -98,6 +107,7 @@ const App = () => {
             <ListaReseña 
               movies={movies} 
               onDelete={deleteMovie} 
+              onEdit={editMovie}
             />
           )}
         </>
