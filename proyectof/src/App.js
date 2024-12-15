@@ -63,9 +63,15 @@ const App = () => {
     setActiveView('login'); // Redirige al login
   };
 
+  // Añadir reseña
   const addMovie = (newMovie) => {
-    setMovies([...movies, { ...newMovie, id: movies.length + 1 }]);
+    setMovies([...movies, { ...newMovie, id: Date.now() }]); // Genera un ID único con Date.now()
     setActiveView('list');
+  };
+
+  // Eliminar reseña
+  const deleteMovie = (id) => {
+    setMovies(movies.filter(movie => movie.id !== id));
   };
 
   return (
@@ -88,7 +94,12 @@ const App = () => {
           />
           {activeView === 'home' && <PaginaDeInicio />}
           {activeView === 'create' && <MovieForm onAddMovie={addMovie} />}
-          {activeView === 'list' && <ListaReseña movies={movies} />}
+          {activeView === 'list' && (
+            <ListaReseña 
+              movies={movies} 
+              onDelete={deleteMovie} 
+            />
+          )}
         </>
       )}
     </div>

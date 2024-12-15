@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ReactStars from "react-rating-stars-component"; //npm install react-rating-stars-component
+import ReactStars from "react-rating-stars-component";
 
 const FormContainer = styled.div`
   width: 100%;
@@ -61,8 +61,8 @@ const Button = styled.button`
 `;
 
 const Texto = styled.textarea`
- width: 100%;
- height:50px;
+  width: 100%;
+  height: 50px;
   padding: 12px;
   margin: 8px 0;
   border: 2px solid #ddd;
@@ -77,17 +77,19 @@ const Texto = styled.textarea`
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
   }
 `;
+
 const Titulo = styled.h2`
-color:white;`;
+  color: white;
+`;
+
 const MovieForm = ({ onAddMovie }) => {
   const [movie, setMovie] = useState({
     title: '',
-    image:'',
+    image: '',
     date: '',
     rating: 0,
     reviews: ''
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -96,40 +98,62 @@ const MovieForm = ({ onAddMovie }) => {
       [name]: value
     });
   };
+
   const handleRatingChange = (newRating) => {
     setMovie({
       ...movie,
       rating: newRating, // Actualizamos la calificación seleccionada
     });
   };
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if(movie.title && movie.image && movie.date && movie.rating && movie.reviews){
-        onAddMovie(movie);
-        setMovie({title:'', image:'', date:'', rating:0, reviews:''})
-      }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (movie.title && movie.image && movie.date && movie.rating && movie.reviews) {
+      onAddMovie(movie);
+      setMovie({ title: '', image: '', date: '', rating: 0, reviews: '' });
     }
-  
+  };
 
   return (
     <FormContainer>
       <Titulo>Añadir Reseña</Titulo>
       <form onSubmit={handleSubmit}>
         <InputGroup>
-        <Label htmlFor="title">Nombre de la película</Label>
-        <Input type="text" name="title" value={movie.title} onChange={handleChange} placeholder="Ingresa el titulo de la película"/>
+          <Label htmlFor="title">Nombre de la película</Label>
+          <Input
+            id="title"
+            type="text"
+            name="title"
+            value={movie.title}
+            onChange={handleChange}
+            placeholder="Ingresa el título de la película"
+          />
         </InputGroup>
         <InputGroup>
-        <Label htmlFor="image">Imagen</Label>
-        <Input type="text" name="image" value={movie.image} onChange={handleChange} placeholder="Ingresa la imagen de la película"/>
+          <Label htmlFor="image">Imagen</Label>
+          <Input
+            id="image"
+            type="text"
+            name="image"
+            value={movie.image}
+            onChange={handleChange}
+            placeholder="Ingresa la imagen de la película"
+          />
         </InputGroup>
         <InputGroup>
-        <Label htmlFor="date">Fecha</Label>
-        <Input type="date" name="date" value={movie.date} onChange={handleChange} placeholder="Ingresa la fecha actual"/>
+          <Label htmlFor="date">Fecha</Label>
+          <Input
+            id="date"
+            type="date"
+            name="date"
+            value={movie.date}
+            onChange={handleChange}
+            placeholder="Ingresa la fecha actual"
+          />
         </InputGroup>
         <InputGroup>
-        <Label htmlFor="rating">Calificación</Label>
-        <ReactStars
+          <Label htmlFor="rating">Calificación</Label>
+          <ReactStars
             count={10}
             value={movie.rating} // Valor actual de la calificación
             onChange={handleRatingChange} // Maneja el cambio de calificación
@@ -138,9 +162,17 @@ const MovieForm = ({ onAddMovie }) => {
           />
         </InputGroup>
         <InputGroup>
-        <Label htmlFor="reviews">Crítica</Label>
-        <Texto name="reviews" onChange={handleChange} value={movie.reviews} rows={5} placeholder="Escribe tu reseña de la película..."/>    
+          <Label htmlFor="reviews">Crítica</Label>
+          <Texto
+            id="reviews"
+            name="reviews"
+            onChange={handleChange}
+            value={movie.reviews}
+            rows={5}
+            placeholder="Escribe tu reseña de la película..."
+          />
         </InputGroup>
+
         <Button type="submit">Añadir</Button>
       </form>
     </FormContainer>
@@ -148,6 +180,3 @@ const MovieForm = ({ onAddMovie }) => {
 };
 
 export default MovieForm;
-
-
-
