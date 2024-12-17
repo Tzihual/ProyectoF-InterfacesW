@@ -6,7 +6,7 @@ const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
   margin: 30px auto;
-  background-color: #00008B;
+ background:linear-gradient(to bottom, #B22222, #8B0000);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -45,8 +45,8 @@ const Label = styled.label`
 const Button = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: #0000CE;
-  color: white;
+   background-color: #FFD700; 
+color: #000000; 
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -54,8 +54,8 @@ const Button = styled.button`
   transition: background-color 0.3s, transform 0.3s;
   box-sizing: border-box;
 
-  &:hover {
-    background-color: #8B0000;
+   &:hover {
+    background-color: #DAA520;
     transform: translateY(-2px);
   }
 `;
@@ -86,7 +86,6 @@ const MovieForm = ({ onAddMovie }) => {
   const [movie, setMovie] = useState({
     title: '',
     image: '',
-    date: '',
     rating: 0,
     reviews: ''
   });
@@ -108,9 +107,10 @@ const MovieForm = ({ onAddMovie }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (movie.title && movie.image && movie.date && movie.rating && movie.reviews) {
+    if (movie.title && movie.image && movie.rating && movie.reviews) {
       onAddMovie(movie);
-      setMovie({ title: '', image: '', date: '', rating: 0, reviews: '' });
+      setMovie({ title: '', image: '', rating: 0, reviews: '' });
+  
     }
   };
 
@@ -141,17 +141,6 @@ const MovieForm = ({ onAddMovie }) => {
           />
         </InputGroup>
         <InputGroup>
-          <Label htmlFor="date">Fecha</Label>
-          <Input
-            id="date"
-            type="date"
-            name="date"
-            value={movie.date}
-            onChange={handleChange}
-            placeholder="Ingresa la fecha actual"
-          />
-        </InputGroup>
-        <InputGroup>
           <Label htmlFor="rating">Calificación</Label>
           <ReactStars
             count={10}
@@ -172,7 +161,6 @@ const MovieForm = ({ onAddMovie }) => {
             placeholder="Escribe tu reseña de la película..."
           />
         </InputGroup>
-
         <Button type="submit">Añadir</Button>
       </form>
     </FormContainer>

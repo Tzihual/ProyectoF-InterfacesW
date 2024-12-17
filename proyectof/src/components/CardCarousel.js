@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  width: 300px; /* Ancho fijo del card */
+  width: 290px; /* Ancho fijo del card */
   height: 450px; /* Altura fija del card */
+  pading:10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,17 +13,17 @@ const CardContainer = styled.div`
   color: white;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 5px; /* Espaciado entre cards */
+  margin: 6px; 
   transition: transform 0.3s ease, filter 0.3s ease;
 
   &:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    transform: scale(1.05); 
     filter: brightness(1.2); /* Aumenta el brillo */
   }
 `;
 
 const MovieImage = styled.img`
-  width: 100%; /* La imagen ocupa todo el ancho del card */
+  width: 95%; /* La imagen ocupa todo el ancho del card */
   height: 350px; /* Altura ajustada para mantener la proporción */
   object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsión */
  

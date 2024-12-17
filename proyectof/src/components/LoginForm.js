@@ -9,15 +9,17 @@ const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #f9f6f7, #d8bfd8);
+  background: linear-gradient(to right, #1e3c72, #2a5298, #00008B);
+  background-size: cover;
   font-family: Arial, sans-serif;
 `;
 
 const FormContainer = styled.div`
-  background-color: #8A2BE2;
+  background:linear-gradient(to bottom, #B22222, #8B0000);
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5), 0 0 20px #F0E68C; 
+  animation: float 3s ease-in-out infinite;
   text-align: center;
   max-width: 400px;
   width: 100%;
@@ -31,7 +33,7 @@ const Logo = styled.img`
 
 const Title = styled.h1`
   font-size: 24px;
-  color: #FFD700;
+  color: #FFF;
   margin-bottom: 20px;
   font-weight: bold;
 `;
@@ -66,8 +68,8 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #FFD700;
-  color: #4B0082;
+  background-color: #FFD700; 
+color: #000000; 
   padding: 12px;
   width: 100%;
   border: none;
@@ -106,7 +108,7 @@ const LinksContainer = styled.div`
 `;
 
 const Link = styled.a`
-  color: #FFD700;
+  color: #fff;
   text-decoration: none;
   margin: 0 10px;
 
@@ -189,7 +191,7 @@ const LoginForm = ({ onLogin, onSwitchView }) => {
       )}
       <FormContainer>
         <Logo src={logo} alt="Logo" />
-        <Title>Hola, Bienvenido!</Title>
+        <Title>¡Hola, Bienvenido!</Title>
         <form onSubmit={handleSubmit}>
           <InputGroup>
             <Icon><FaUser /></Icon>
@@ -221,7 +223,7 @@ const LoginForm = ({ onLogin, onSwitchView }) => {
           </ButtonContainer>
         </form>
         <LinksContainer>
-          <Link href="#" onClick={onSwitchView}>No tienes una cuenta?</Link>
+          <Link href="#" onClick={onSwitchView}>¿No tienes una cuenta?</Link>
         </LinksContainer>
       </FormContainer>
     </PageContainer>

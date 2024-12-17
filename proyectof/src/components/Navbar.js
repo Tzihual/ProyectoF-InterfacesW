@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../imagenes/logof.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faPlus, faList } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -10,10 +12,12 @@ const NavbarContainer = styled.div`
   background-color: #191970;
   color: white;
   font-family: Arial, sans-serif;
+  
 `;
 
 const Logo = styled.img`
-  height: 50px;
+  height: 70px;
+ pading:2px;
 `;
 
 const NavButton = styled.button`
@@ -23,9 +27,12 @@ const NavButton = styled.button`
   color: white;
   border-radius: 5px;
   cursor: pointer;
-
+  font-size:14px;
+  
+  gap: 20px;
   &:hover {
     background-color: #8B0000;
+    transform: scale(1.05);
   }
 `;
 
@@ -37,7 +44,7 @@ const UserContainer = styled.div`
 
 const UserIcon = styled.div`
   background-color: #FFD700;
-  color: #4B0082;
+  color: #000000;
   font-size: 16px;
   font-weight: bold;
   width: 40px;
@@ -48,6 +55,11 @@ const UserIcon = styled.div`
   border-radius: 50%;
 `;
 
+const ContainerButtons= styled.div`
+display: flex;
+  gap: 25px;
+`;
+
 const Navbar = ({ onSwitchView, currentUser, onLogout }) => {
   const getUserInitial = () => {
     return currentUser?.username.charAt(0).toUpperCase() || '?';
@@ -56,11 +68,11 @@ const Navbar = ({ onSwitchView, currentUser, onLogout }) => {
   return (
     <NavbarContainer>
       <Logo src={logo} alt="Logo" />
-      <div>
-        <NavButton onClick={() => onSwitchView('home')}>Inicio</NavButton>
-        <NavButton onClick={() => onSwitchView('create')}>Añadir Reseña</NavButton>
-        <NavButton onClick={() => onSwitchView('list')}>Lista de Reseñas</NavButton>
-      </div>
+      <ContainerButtons>
+        <NavButton onClick={() => onSwitchView('home')}><FontAwesomeIcon icon={faHome} /> Inicio</NavButton>
+        <NavButton onClick={() => onSwitchView('create')}><FontAwesomeIcon icon={faPlus}/> Añadir Reseña</NavButton>
+        <NavButton onClick={() => onSwitchView('list')}><FontAwesomeIcon icon={faList}/> Lista de Reseñas</NavButton>
+      </ContainerButtons>
       {currentUser && (
         <UserContainer>
           <UserIcon>{getUserInitial()}</UserIcon>

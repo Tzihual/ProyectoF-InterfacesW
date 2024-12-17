@@ -4,19 +4,19 @@ import ReactStars from 'react-rating-stars-component';
 import EditModal from './EditModal';
 
 const CardContainer = styled.div`
-  background-color: #fff;
+  background:linear-gradient(to bottom, #B22222, #8B0000);
   padding: 20px;
   margin: 15px 0;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px; /* Limita el tamaño del card */
+  max-width: 400px; 
   text-align: center;
   box-sizing: border-box;
 `;
 
 const MovieTitle = styled.h3`
-  color: #555;
+  color: #ffffff;
   font-size: 20px;
   margin-bottom: 10px;
 `;
@@ -31,7 +31,7 @@ const MovieImage = styled.img`
 
 const MovieReview = styled.p`
   font-size: 16px;
-  color: #555;
+  color: #ffffff;
 `;
 
 const ButtonGroup = styled.div`
@@ -42,8 +42,8 @@ const ButtonGroup = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #0000CE;
-  color: white;
+  background-color: #FFD700; 
+color: #000000; 
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -51,8 +51,8 @@ const Button = styled.button`
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   
-  &:hover {
-    background-color: #FF4500;
+   &:hover {
+    background-color: #DAA520;
     transform: translateY(-2px);
   }
 `;

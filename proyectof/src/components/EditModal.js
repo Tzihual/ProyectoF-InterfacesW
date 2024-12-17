@@ -96,6 +96,7 @@ const FormGroup = styled.div`
 
 const EditModal = ({ isOpen, onClose, movie, onSave }) => {
   const [title, setTitle] = React.useState(movie.title);
+  const [image, setImage] = React.useState(movie.image);
   const [reviews, setReviews] = React.useState(movie.reviews);
   const [rating, setRating] = React.useState(movie.rating);
 
@@ -106,7 +107,7 @@ const EditModal = ({ isOpen, onClose, movie, onSave }) => {
   if (!isOpen) return null;
 
   const handleSave = () => {
-    onSave({ ...movie, title, reviews, rating });
+    onSave({ ...movie, title,image, reviews, rating });
     onClose();
   };
 
@@ -122,6 +123,14 @@ const EditModal = ({ isOpen, onClose, movie, onSave }) => {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                />
+            </FormGroup>
+            <FormGroup>
+                <label>Imagen de la película:</label>
+                <FormField
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
                 />
             </FormGroup>
             <FormGroup>

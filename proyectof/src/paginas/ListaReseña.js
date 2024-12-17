@@ -4,6 +4,7 @@ import MovieCard from '../components/MovieCard';
 
 const PageContainer = styled.div`
   padding: 20px;
+  
 `;
 
 const Header = styled.h2`
@@ -14,15 +15,15 @@ const Header = styled.h2`
 const NoReviewsMessage = styled.p`
   text-align: center;
   font-size: 18px;
-  color: #555;
+  color: #A9A9A9;
 `;
 
 const ListaReseña = ({ movies, onDelete, onEdit }) => {
   return (
     <PageContainer>
-      <Header>Lista de Mis Reseñas</Header>
+      <Header>Lista de mis reseñas</Header>
       {movies.length === 0 ? (
-        <NoReviewsMessage>No tienes reseñas guardadas aún.</NoReviewsMessage>
+        <NoReviewsMessage>No tienes reseñas guardadas aún</NoReviewsMessage>
       ) : (
         <div className="movie-list">
           {movies.map((movie) => (
