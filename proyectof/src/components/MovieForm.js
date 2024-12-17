@@ -143,7 +143,7 @@ const MovieForm = ({ onAddMovie }) => {
         <InputGroup>
           <Label htmlFor="rating">Calificación</Label>
           <ReactStars
-            count={10}
+            count={5}
             value={movie.rating} // Valor actual de la calificación
             onChange={handleRatingChange} // Maneja el cambio de calificación
             size={30}

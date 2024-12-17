@@ -143,7 +143,7 @@ const EditModal = ({ isOpen, onClose, movie, onSave }) => {
             <FormGroup>
             <label>Calificación:</label>
             <ReactStars
-              count={10}
+              count={5}
               value={rating}
               onChange={handleRatingChange}
               size={24}
