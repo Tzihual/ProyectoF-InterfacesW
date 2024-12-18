@@ -44,7 +44,7 @@ const UserContainer = styled.div`
 
 const UserIcon = styled.div`
   background-color: #FFD700;
-  color: #000000;
+  color: #191970;
   font-size: 16px;
   font-weight: bold;
   width: 40px;

@@ -46,7 +46,7 @@ const Button = styled.button`
   width: 100%;
   padding: 12px;
    background-color: #FFD700; 
-color: #000000; 
+color: #191970; 
   border: none;
   border-radius: 8px;
   font-size: 16px;

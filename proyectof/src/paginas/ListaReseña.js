@@ -18,10 +18,11 @@ const NoReviewsMessage = styled.p`
   color: #A9A9A9;
 `;
 
+
 const ListaReseña = ({ movies, onDelete, onEdit }) => {
   return (
     <PageContainer>
-      <Header>Lista de mis reseñas</Header>
+      <Header>Lista de Reseñas</Header>
       {movies.length === 0 ? (
         <NoReviewsMessage>No tienes reseñas guardadas aún</NoReviewsMessage>
       ) : (

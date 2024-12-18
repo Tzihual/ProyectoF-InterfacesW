@@ -69,7 +69,7 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
   background-color: #FFD700; 
-color: #000000; 
+color: #191970; 
   padding: 12px;
   width: 100%;
   border: none;
@@ -98,7 +98,7 @@ const ProgressBar = styled.div`
   left: 0;
   height: 100%;
   width: ${(props) => props.progress}%;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #87CEFA;
   transition: width 0.4s ease;
 `;
 

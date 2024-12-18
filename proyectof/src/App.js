@@ -6,12 +6,18 @@ import PaginaDeInicio from './paginas/PaginaDeInicio';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import "./App.css";
+import Footer from './components/Footer';
 
 const App = () => {
+  const defaultMovies = [
+    { id: 1, title: 'Me before you', image: 'https://m.media-amazon.com/images/I/81aTCHD61EL._SY466_.jpg', rating: '5', reviews: 'Una película preciosa' },
+    { id: 2, title: 'End Game', image: 'https://m.media-amazon.com/images/I/81Y9S4bq6-L.__AC_SX300_SY300_QL70_ML2_.jpg', rating: '5', reviews: 'Una obra maestra de acción y drama.' },
+    { id: 3, title: 'We Live In Time', image: 'https://m.media-amazon.com/images/I/61RwbXRXdFL._AC_SX342_.jpg', rating: '3', reviews: 'Esperaba más, no fue lo que esperaba' }
+  ];
   const [activeView, setActiveView] = useState('login'); // Vista actual
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de sesión
   const [currentUser, setCurrentUser] = useState(null); // Usuario actual
-  const [movies, setMovies] = useState([]); // Arreglo de películas
+  const [movies, setMovies] = useState(defaultMovies); // Arreglo de películas
   const [users, setUsers] = useState([
     { username: 'admin', email: 'admin@example.com', password: 'admin' }, // Usuario inicial
   ]); // Arreglo de usuarios
@@ -111,8 +117,10 @@ const App = () => {
             />
           )}
         </>
-        
       )}
+      <br></br><br></br>
+      <Footer/>
+      <br></br>
     </div>
   );
 };

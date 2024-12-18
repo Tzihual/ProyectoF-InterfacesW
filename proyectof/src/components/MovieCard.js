@@ -10,7 +10,7 @@ const CardContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px; 
+  max-width: 300px; 
   text-align: center;
   box-sizing: border-box;
 `;
@@ -23,8 +23,8 @@ const MovieTitle = styled.h3`
 
 const MovieImage = styled.img`
   width: 100%;
-  height: auto;
-  max-width: 300px; /* Controla el tamaño máximo de la imagen */
+  height: 200px;
+  max-width: 200px; /* Controla el tamaño máximo de la imagen */
   border-radius: 8px;
   margin-bottom: 10px;
 `;
@@ -43,7 +43,7 @@ const ButtonGroup = styled.div`
 
 const Button = styled.button`
   background-color: #FFD700; 
-color: #000000; 
+color: #191970; 
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -77,7 +77,7 @@ const MovieCard = ({ movie, onDelete, onEdit }) => {
       {movie.image && <MovieImage src={movie.image} alt={movie.title} />}
       <RatingContainer>
         <ReactStars
-          count={10}
+          count={5}
           value={movie.rating}
           size={24}
           activeColor="#FFD700"
